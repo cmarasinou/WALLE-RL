@@ -138,6 +138,14 @@ class Agent():
                 policy[i] = np.argmax(self.action_symbols==symbol)
 
         return policy
+
+    def render_policy(self):
+        '''Prints symbolic version of current policy'''
+        policy_render = [self.action_symbols[idx] if idx in range(0,len(self.actions)) else '#'\
+                    for idx in self.policy]
+        policy_render = np.array(policy_render).reshape(self.h,self.w)
+        print(policy_render)
+        print('\n')
     
     def step(self, state):
         '''Agent decides an action given a policy
